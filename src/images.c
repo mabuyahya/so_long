@@ -6,7 +6,7 @@
 /*   By: mabuyahy <mabuyahy@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 04:37:57 by mabuyahy          #+#    #+#             */
-/*   Updated: 2024/12/31 20:02:58 by mabuyahy         ###   ########.fr       */
+/*   Updated: 2026/01/02 17:01:26 by mabuyahy         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	puting_images(t_game *game, int x, int y)
 	void	*temp;
 
 	i = 0;
+	temp = NULL;
 	if (game->map[y][x] == 'C')
 		temp = game->c_image;
 	else if (game->map[y][x] == 'P')
@@ -69,7 +70,8 @@ void	puting_images(t_game *game, int x, int y)
 		temp = game->f_image;
 	else if (game->map[y][x] == '1')
 		temp = game->w_image;
-	i = mlx_put_image_to_window(game->mlx, game->win, temp, x * IMAGE_SIZE, y
+	if (temp)
+		i = mlx_put_image_to_window(game->mlx, game->win, temp, x * IMAGE_SIZE, y
 			* IMAGE_SIZE);
 	if (i == -1)
 	{
